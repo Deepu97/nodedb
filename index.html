@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        <input type="text" name="data" id="inp1">
+        <button onclick="fun()">send</button>
+    
+    <script>
+        async function fun(){
+            const  inp=document.getElementById('inp1');
+            const data=await fetch('http://localhost:3000',{
+                method:'POST',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify({"name":inp.value}),
+            });
+            const res=await JSON.stringify(data);
+            console.log(res);
+            
+        }
+        
+    </script>
+</body>
+</html>
